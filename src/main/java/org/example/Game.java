@@ -26,7 +26,6 @@ public class Game {
             }
             loose();
             keepPlaying();
-            reset();
         }
         GamePrint.end();
         scanner.close();
@@ -34,6 +33,9 @@ public class Game {
 
     void keepPlaying(){
         continuePlaying = parser.retry();
+        if (continuePlaying) {
+            reset();
+        }
     }
     void guess(){
         if (userGuess == expectedNumber.number) {
@@ -51,9 +53,7 @@ public class Game {
     }
 
     void reset(){
-        if (continuePlaying) {
-            userGuess = 0;
-            attempts = 0;
-        }
+        userGuess = 0;
+        attempts = 0;
     }
 }
